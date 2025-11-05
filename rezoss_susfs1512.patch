@@ -178,8 +178,8 @@ index 9fec3ef3..8a190993 100644
  
  ccflags-y += -DEXPECTED_MANAGER_SIZE=$(KSU_NEXT_MANAGER_SIZE)
  ccflags-y += -DEXPECTED_MANAGER_HASH=\"$(KSU_NEXT_MANAGER_HASH)\"
-+ccflags-y += -DEXPECTED_MANAGER_SIZE=$(WKSU_MANAGER_SIZE)
-+ccflags-y += -DEXPECTED_MANAGER_HASH=\"$(WKSU_MANAGER_HASH)\"
++ccflags-y += -DEXPECTED_WKSU_MANAGER_SIZE=$(WKSU_MANAGER_SIZE)
++ccflags-y += -DEXPECTED_WKSU_MANAGER_HASH=\"$(WKSU_MANAGER_HASH)\"
  
  ccflags-y += -DKSU_UMOUNT
  
@@ -317,7 +317,7 @@ index ba8b73f2..6ae5e3b9 100644
 +	return check_v2_signature(path, expected_manager_size, expected_manager_hash)
 +		|| check_v2_signature(path, 0x3e6, "79e590113c4c4c0c222978e413a5faa801666957b1212a328e46c00c69821bf7")   // KernelSU-Next
 +		|| check_v2_signature(path, 0x033b, "c371061b19d8c7d7d6133c6a9bafe198fa944e50c1b31c9d8daa8d7f1fc2d2d6")  // KernelSU
-+       || check_v2_signature(path, 0x35c, "947ae944f3de4ed4c21a7e4f7953ecf351bfa2b36239da37a34111ad29993eef");  // SukiSU
++  || check_v2_signature(path, EXPECTED_WKSU_MANAGER_SIZE, "EXPECTED_WKSU_MANAGER_HASH");  // WKSU
  }
 
 diff --git a/KernelSU-Next/kernel/core_hook.c b/KernelSU-Next/kernel/core_hook.c
