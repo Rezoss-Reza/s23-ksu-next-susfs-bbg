@@ -12,6 +12,8 @@ jobs:
       - name: Set up the toolchain
         run: |
           sudo apt update
+          sudo apt purge -y firefox
+          sudo apt-mark hold firefox
           sudo apt upgrade -y
           sudo apt install -y \
           bc bison flex build-essential git curl \
@@ -19,6 +21,7 @@ jobs:
           pahole dwarves cpio \
           python3 python-is-python3 \
           tar perl zip zlib1g-dev
+
 
       - name: Clone source
         run: |
